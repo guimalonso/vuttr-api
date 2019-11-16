@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
 const authConfig = require('../config/auth');
 const User = require('../models/User');
@@ -9,7 +8,7 @@ const SessionController = {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 
-    if (!user || !(await (bcrypt.compare(password, user.password)))) {
+    if (!user || !user.comparePassword(password)) {
       return res.status(400).json({ error: 'Invalid e-mail and/or password.' });
     }
 
