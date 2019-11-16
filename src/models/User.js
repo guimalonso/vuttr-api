@@ -19,9 +19,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: 'Please insert a password.'
-  },
-
-  passwordHash: String
+  }
 });
 
 userSchema.pre('save', async function (next) {
