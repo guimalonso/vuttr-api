@@ -22,6 +22,7 @@ To install the application you need to ensure that you have Node.js and Yarn (or
 
 + Clone the repository in your machine.
 + Access the application where the source code is located and run the "yarn" command (or "npm install" if you are using npm) to get the dependencies.
++ Rename the file ".env.example"to ".env".
 + Run the "yarn start" (or "npm run start") command to start the application.
 
 Once you have followed these instructions you will be able to make requests on the application
