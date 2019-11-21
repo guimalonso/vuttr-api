@@ -11,10 +11,6 @@ The VUTTR API was constructed using the following platforms and libraries:
 + Express
 + MongoDB
 + Mongoose
-+ DotENV
-+ JsonWebToken (JWT)
-+ Bcrypt
-+ Nodemon
 
 ## Install Instructions
 
