@@ -20,11 +20,6 @@ const toolSchema = new mongoose.Schema({
     required: 'Please insert a description.',
   },
 
-  userId: {
-    type: String,
-    required: true
-  },
-
   tags: [String],
 });
 

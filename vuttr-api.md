@@ -4,120 +4,12 @@ FORMAT: 1A
 
 VUTTR is an API that allows registering and visualization of data about useful tools for different tasks.
 
-#Group users
-
-Resources related to users.
-
-## User [/users]
-An user object has the following attributes:
-+ name 
-+ email
-+ password
-
-### Create a new user [POST]
-Create a new user that will be able to create or delete tools.
-
-+ Request (application/json)
-  + Body
-    {
-      "name": "Guilherme",
-      "email": "guilherme.malonso@gmail.com",
-      "password": "teste"
-    }
-
-  + Schema
-    {
-      "$schema": "http://json-schema.org/draft/2019-09/schema#",
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    }
-
-+ Response 201 (application/json)
-  {
-    "_id": "5dcf0360f526781083b90f79",
-    "name": "Guilherme",
-    "email": "guilherme.malonso@gmail.com"
-  }
-
-## User Tools [/users/tools]
-
-### View the user tools [GET]
-Retrieves all the tools created by the authenticated user (see /sessions for more information).
-
-+ Request (application/json)
-  + Headers
-    + authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGNmMDM2MGY1MjY3ODEwODNiOTBmNzkiLCJpYXQiOjE1NzM4NDgwMDIsImV4cCI6MTU3NDQ1MjgwMn0.S7OKrYDE1ROX22ieicC5mR7hKrlvE-AGx35gvzE2JmU
-    
-+ Response 201 (application/json)
-  [
-    {
-      "tags": [
-        "web",
-        "framework",
-        "JavaScript"
-      ],
-      "_id": "5dcf06f8cc6012119c6f34fc",
-      "title": "react",
-      "link": "https://reactjs.org/",
-      "description": "Powerful, component-based front-end framework for JavaScript."
-    }
-  ]
-
-#Group sessions
-
-Resources related to user authentication sessions.
-
-## Session [/sessions]
-
-### Authenticates an user [POST]
-Authenticates a registered user if the correct e-mail and password are provided. The token returned by the operation can be used on the authentication header of authentication-required operations' requests.
-
-+ Request (application/json)
-  + Body
-    {
-      "email": "guilherme.malonso@gmail.com",
-      "password": "teste"
-    }
-  
-  + Schema
-    {
-      "$schema": "http://json-schema.org/draft/2019-09/schema#",
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    }
-
-+ Response 200 (application/json)
-  {
-    "user": {
-      "_id": "5dcf0360f526781083b90f79",
-      "name": "Guilherme",
-      "email": "guilherme.malonso@gmail.com"
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGNmMDM2MGY1MjY3ODEwODNiOTBmNzkiLCJpYXQiOjE1NzM4NDgwMDIsImV4cCI6MTU3NDQ1MjgwMn0.S7OKrYDE1ROX22ieicC5mR7hKrlvE-AGx35gvzE2JmU"
-  }
 
 #Group tools
 
 Resources related to tool data.
 
-## Tool [/tools?tag={tag}]
+## Tool [/tools?tag={tag}&tagSearch=1]
 
 A tool object has the following attributes:
 + title 
@@ -125,11 +17,12 @@ A tool object has the following attributes:
 + description - More details about the tool
 + Tags - A collection of tags used for tool searching
 
-+ Parameters
-  + tag: (optional, string) - tag to search for tools, used only in GET requests
-
 ### View the available tools [GET]
 Retrieves all the tools that have a specified tag, or all the registered tools if the tag is not provided.
+
++ Parameters
+  + tag: (optional, string) - term to search for tools
+  + tagSearch: (optional, integer) - search for the term only in tags list if value is 1
 
 + Response 200 (application/json)
 [

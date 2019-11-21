@@ -2,14 +2,26 @@ const Tool = require('../models/Tool');
 
 const ToolController = {
   async index(req, res) {
-    const { tag } = req.query;
+    const { tag, tagSearch } = req.query;
 
-    let searchObj = {};
+    let searchFilter = {};
     if (tag) {
-      searchObj = { tags: tag };
+      const tagSearchFilter = { tags: tag };
+
+      if (!tagSearch) {
+        searchFilter = {
+          $or: [
+            tagSearchFilter,
+            { title: { '$regex': tag, '$options': 'i' } },
+            { description: { '$regex': tag, '$options': 'i' } }
+          ]
+        };
+      } else {
+        searchFilter = tagSearchFilter;
+      }
     }
 
-    const tools = await Tool.find(searchObj, 'id title link description tags');
+    const tools = await Tool.find(searchFilter, 'id title link description tags');
 
     return res.json(tools);
   },
