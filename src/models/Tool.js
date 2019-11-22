@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const database = require('../database');
 
 const toolSchema = new mongoose.Schema({
   title: {
@@ -23,4 +24,4 @@ const toolSchema = new mongoose.Schema({
   tags: [String],
 });
 
-module.exports = mongoose.model('Tool', toolSchema);
+module.exports = database.model('Tool', toolSchema);
