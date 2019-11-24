@@ -2,6 +2,8 @@ const Yup = require('yup');
 const Tool = require('../models/Tool');
 
 const ToolController = {
+
+  // GET /tools[?tag=:tag[&tagSearch=1]]
   async index(req, res) {
     const { tag, tagSearch } = req.query;
 
@@ -27,7 +29,10 @@ const ToolController = {
     return res.json(tools);
   },
 
+  // POST /tools
   async store(req, res) {
+
+    // Request Validation
     const schema = Yup.object().shape({
       title: Yup.string().required(),
       link: Yup.string().url().required(),
@@ -39,6 +44,7 @@ const ToolController = {
       return res.status(400).json({ message: 'Validation failed, please check your data' });
     }
 
+    // Tool title must be unique
     const tool = await Tool.findOne({ title: req.body.title });
     if (tool) {
       return res.status(400).json({ message: 'Tool title is already in use.' });
@@ -61,10 +67,12 @@ const ToolController = {
     }
   },
 
+  // DELETE /tools/:id
   async delete(req, res) {
     const { id } = req.params;
 
     try {
+      // Check if title with given id exists
       const tool = await Tool.findById(id);
       if (!tool) {
         return res.status(400).json({ message: 'This tool does not exist.' });

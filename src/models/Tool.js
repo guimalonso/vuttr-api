@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const database = require('../database');
 
+// Model schema definition
 const toolSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -21,7 +21,12 @@ const toolSchema = new mongoose.Schema({
     required: 'Please insert a description.',
   },
 
-  tags: [String],
+  tags: [
+    {
+      type: String,
+      trim: true
+    }
+  ],
 });
 
-module.exports = database.model('Tool', toolSchema);
+module.exports = mongoose.model('Tool', toolSchema);
