@@ -1,6 +1,3 @@
-const http = require('http');
-
 const app = require('./app');
 
-const server = http.Server(app);
-server.listen(process.env.PORT);
+app.listen(process.env.PORT);
