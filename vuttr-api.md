@@ -5,7 +5,7 @@ FORMAT: 1A
 VUTTR is an API that allows registering and visualization of data about useful tools for different tasks.
 
 
-#Group tools
+# Group tools
 
 Resources related to tool data.
 
