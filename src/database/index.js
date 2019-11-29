@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Database connection
-mongoose.connect(process.env.MONGO_URL,
+mongoose.connect('mongodb://db:27017/vuttr',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

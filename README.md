@@ -1,26 +1,30 @@
 # VUTTR
 
-VUTTR (Very Useful Tools to Remember) is an application that allows data visualization and registration about useful tools for different purposes. This project has the API constructed for the app.
+VUTTR (Very Useful Tools to Remember) is an application that allows data visualization and registration of useful tools for different purposes. This project has the API constructed for the app, as well as the integration tests and the required files to run the API using a Docker container.
 
 ## Platforms and Libraries
 
-The VUTTR API was constructed using the following platforms and libraries:
+The main tools used for the construction of this API were:
++ Node.js (https://nodejs.org/)
++ Express (https://expressjs.com/)
++ MongoDB (https://www.mongodb.com/)
++ Mongoose (https://mongoosejs.com/)
++ Jest (https://jestjs.io/)
 
-+ Node.js
-+ Yarn
-+ Express
-+ MongoDB
-+ Mongoose
+## Running Instructions
 
-## Install Instructions
-
-To install the application you need to ensure that you have Node.js and Yarn (or npm) installed and an instance of MongoDB running in your machine. After these requirements are matched, follow the instructions below:
+To install the application you need to ensure that you have Docker installed and running in your machine.
 
 + Clone the repository in your machine.
-+ Access the directory where the source code is located and run the "yarn" command (or "npm install" if you are using npm) to get the dependencies.
-+ Rename the file ".env.example" to ".env".
-+ Run the "yarn start" (or "npm run start") command to start the application.
++ Access the directory where the source code is located and run the following command to start the application:
+```
+docker-compose up
+```
 
 Once you have followed these instructions you will be able to make requests on the API
 using the endpoint "http://localhost:3000/[ROUTE]" and an API client of your choice (like Postman or Insomnia). See the API documentation on vuttr-api.md for more details.
 
+To run the tests, use the command:
+```
+docker-compose run --rm server npm test
+```

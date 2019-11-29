@@ -2,3 +2,5 @@
 node_modules/
 __tests__/coverage/
 .env
+api
+db
