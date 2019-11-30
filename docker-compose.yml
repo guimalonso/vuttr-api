@@ -5,6 +5,7 @@ services:
     image: "vuttr-node"
     container_name: NODEJS_SERVER_MEDIUM
     build: '.'
+    command: "yarn start"
     ports:
       - 3000:3000
     depends_on:
@@ -12,7 +13,7 @@ services:
     links:
       - db
     volumes: 
-       - "./api:/usr/src/app/api"
+       - "./api:/usr/app/api"
 
   db:
     image: "mongo"
