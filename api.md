@@ -25,6 +25,7 @@ Retrieves all the tools that have a specified tag, or all the registered tools i
   + tagSearch: (optional, integer) - search for the term only in tags list if value is 1
 
 + Response 200 (application/json)
+```
 [  
   {  
     "tags": [  
@@ -56,6 +57,7 @@ Retrieves all the tools that have a specified tag, or all the registered tools i
     "__v": 0  
   }  
 ]  
+```
 
 ### Create a new tool [POST]
 
@@ -63,6 +65,7 @@ You can create a new tool using this action.
 
 + Request (application/json)
   + Body
+  ```
     {  
       "title": "react",  
       "link": "https://reactjs.org/",  
@@ -73,8 +76,10 @@ You can create a new tool using this action.
         "JavaScript"  
       ]  
     }  
+  ```
 
   + Schema
+  ```
     {  
       "$schema": "http://json-schema.org/draft/2019-09/schema#",  
       "type": "object",  
@@ -97,8 +102,10 @@ You can create a new tool using this action.
         }  
       }  
     }  
+  ```
 
 + Response 201 (application/json)
+  ```
   {  
     "tags": [  
       "web",  
@@ -110,7 +117,8 @@ You can create a new tool using this action.
     "link": "https://reactjs.org/",  
     "description": "Powerful, component-based front-end framework for JavaScript."  
   }  
-
+  ```
+  
 ## Tool [/tools/:id]
 
 ### Delete a tool [DELETE]
