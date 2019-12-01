@@ -59,11 +59,9 @@ Retrieves all the tools that have a specified tag, or all the registered tools i
 
 ### Create a new tool [POST]
 
-You can create a new tool using this action. Requires user authentication (See specification for /sessions).
+You can create a new tool using this action.
 
 + Request (application/json)
-  + Headers
-    + authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGNmMDM2MGY1MjY3ODEwODNiOTBmNzkiLCJpYXQiOjE1NzM4NDgwMDIsImV4cCI6MTU3NDQ1MjgwMn0.S7OKrYDE1ROX22ieicC5mR7hKrlvE-AGx35gvzE2JmU
   + Body
     {
       "title": "react",
@@ -117,6 +115,6 @@ You can create a new tool using this action. Requires user authentication (See s
 
 ### Delete a tool [DELETE]
 
-Deletes a tool with the specified id. It will delete the tool only if the authenticated user is the one who created it, otherwise an error will be returned.
+Deletes a tool with the specified id.
 
 + Response 204 (No response body)
