@@ -11,8 +11,10 @@ require('./database');
 
 const app = express();
 
+const origin = process.env.APP_URL || 'http://localhost:3001';
+
 // Middlewares
-app.use(cors());
+app.use(cors({ origin }));
 app.use(express.json());
 app.use(routes);
 app.use(notFoundMiddleware);
