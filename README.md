@@ -22,7 +22,7 @@ docker-compose up
 ```
 
 Once you have followed these instructions you will be able to make requests on the API
-using the endpoint "http://localhost:3000/[ROUTE]" and an API client of your choice (like Postman or Insomnia). See the API documentation on [vuttr-api.md](https://github.com/guimalonso/vuttr-api/blob/master/api.md) for more details.
+using the endpoint "http://localhost:3000/[ROUTE]" and an API client of your choice (like Postman or Insomnia). See the [API documentation] (https://vuttrapi3.docs.apiary.io/#) for more details.
 
 To run the tests, use the command:
 ```
